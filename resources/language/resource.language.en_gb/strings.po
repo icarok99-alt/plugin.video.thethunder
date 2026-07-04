@@ -1,0 +1,359 @@
+# Thunder - Kodi language file
+# English strings
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Thunder\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-14 00:00+0000\n"
+"PO-Revision-Date: 2025-02-14 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# General Category (30000-30099)
+msgctxt "#30000"
+msgid "Movies"
+msgstr ""
+
+msgctxt "#30001"
+msgid "Tv shows"
+msgstr ""
+
+msgctxt "#30002"
+msgid "Animes"
+msgstr ""
+
+msgctxt "#30003"
+msgid "New movies"
+msgstr ""
+
+msgctxt "#30004"
+msgid "New tv shows"
+msgstr ""
+
+msgctxt "#30005"
+msgid "Trending movies"
+msgstr ""
+
+msgctxt "#30006"
+msgid "Trending tv shows"
+msgstr ""
+
+msgctxt "#30007"
+msgid "Popular movies"
+msgstr ""
+
+msgctxt "#30008"
+msgid "Popular tv shows"
+msgstr ""
+
+msgctxt "#30009"
+msgid "Popular animes"
+msgstr ""
+
+msgctxt "#30010"
+msgid "Season animes"
+msgstr ""
+
+msgctxt "#30011"
+msgid "Animes by year of release"
+msgstr ""
+
+msgctxt "#30013"
+msgid "Resolving link"
+msgstr ""
+
+msgctxt "#30014"
+msgid "Search movies"
+msgstr ""
+
+msgctxt "#30015"
+msgid "Search tv shows"
+msgstr ""
+
+msgctxt "#30016"
+msgid "Search animes"
+msgstr ""
+
+msgctxt "#30017"
+msgid "Settings"
+msgstr ""
+
+msgctxt "#30018"
+msgid "Donation"
+msgstr ""
+
+# Page navigation (30100-30109)
+msgctxt "#30100"
+msgid "Page"
+msgstr ""
+
+msgctxt "#30101"
+msgid "of"
+msgstr ""
+
+# Audio/Subtitle language (30200-30209)
+msgctxt "#30200"
+msgid "DUBBED"
+msgstr ""
+
+msgctxt "#30201"
+msgid "Dubbed"
+msgstr ""
+
+msgctxt "#30202"
+msgid "SUBTITLED"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Subtitled"
+msgstr ""
+
+# Player messages (30300-30319)
+msgctxt "#30300"
+msgid "Select a player"
+msgstr ""
+
+msgctxt "#30301"
+msgid "Press OK to select or Back to cancel"
+msgstr ""
+
+msgctxt "#30302"
+msgid "Searching the sources"
+msgstr ""
+
+msgctxt "#30304"
+msgid "Error trying to play"
+msgstr ""
+
+# Error messages (30400-30419)
+msgctxt "#30400"
+msgid "Please enter a valid search term"
+msgstr ""
+
+msgctxt "#30401"
+msgid "No sources available"
+msgstr ""
+
+msgctxt "#30402"
+msgid "Stream unavailable"
+msgstr ""
+
+msgctxt "#30406"
+msgid "Failed to load details"
+msgstr ""
+
+# Info messages (30500-30519)
+msgctxt "#30500"
+msgid "If you like this add-on, support via PIX above"
+msgstr ""
+
+msgctxt "#30501"
+msgid "Press BACK to exit"
+msgstr ""
+
+# Seasons (30600-30609)
+msgctxt "#30601"
+msgid "Season"
+msgstr ""
+
+msgctxt "#30602"
+msgid "Episode"
+msgstr ""
+
+msgctxt "#30603"
+msgid "Winter"
+msgstr ""
+
+msgctxt "#30604"
+msgid "Spring"
+msgstr ""
+
+msgctxt "#30605"
+msgid "Summer"
+msgstr ""
+
+msgctxt "#30606"
+msgid "Fall"
+msgstr ""
+
+# Language API (30700-30709)
+msgctxt "#30700"
+msgid "en-US"
+msgstr ""
+
+# Additional Messages (30800-30899)
+msgctxt "#30800"
+msgid "Missing required parameters"
+msgstr ""
+
+msgctxt "#30801"
+msgid "Invalid episode number"
+msgstr ""
+
+msgctxt "#30802"
+msgid "Downloading update from"
+msgstr ""
+
+msgctxt "#30803"
+msgid "Extracting files..."
+msgstr ""
+
+msgctxt "#30804"
+msgid "Update completed!"
+msgstr ""
+
+msgctxt "#30805"
+msgid "Error"
+msgstr ""
+
+msgctxt "#30806"
+msgid "Failed to update ResolveURL:"
+msgstr ""
+
+msgctxt "#30807"
+msgid "ResolveURL updated successfully!"
+msgstr ""
+
+msgctxt "#30808"
+msgid "TheThunder"
+msgstr ""
+
+# Settings Category (31000-31099)
+msgctxt "#31000"
+msgid "Auto Play"
+msgstr ""
+
+msgctxt "#31001"
+msgid "Enable auto play"
+msgstr ""
+
+msgctxt "#31002"
+msgid "Preferred language"
+msgstr ""
+
+msgctxt "#31004"
+msgid "Cache"
+msgstr ""
+
+msgctxt "#31005"
+msgid "Clear cache"
+msgstr ""
+
+msgctxt "#31006"
+msgid "Show cache size"
+msgstr ""
+
+msgctxt "#31007"
+msgid "Cache retention time (days)"
+msgstr ""
+
+msgctxt "#31008"
+msgid "Sources"
+msgstr ""
+
+msgctxt "#31009"
+msgid "Sources only for movies and tv shows categories"
+msgstr ""
+
+msgctxt "#31010"
+msgid "Sources only for animes category"
+msgstr ""
+
+msgctxt "#31011"
+msgid "Resolve URL"
+msgstr ""
+
+msgctxt "#31012"
+msgid "Update Resolve URL"
+msgstr ""
+
+# Source Names (31100-31119)
+msgctxt "#31100"
+msgid "Assistirbiz"
+msgstr ""
+
+msgctxt "#31101"
+msgid "Cinevibehd"
+msgstr ""
+
+msgctxt "#31102"
+msgid "Goflix"
+msgstr ""
+
+msgctxt "#31103"
+msgid "Netcine"
+msgstr ""
+
+msgctxt "#31104"
+msgid "Overflix"
+msgstr ""
+
+msgctxt "#31105"
+msgid "Animesup"
+msgstr ""
+
+msgctxt "#31106"
+msgid "Animesdigital"
+msgstr ""
+
+msgctxt "#31107"
+msgid "Hinatasoul"
+msgstr ""
+
+# Up Next Category (32100-32199)
+msgctxt "#32100"
+msgid "Up Next"
+msgstr ""
+
+msgctxt "#32101"
+msgid "Enable Up Next"
+msgstr ""
+
+msgctxt "#32102"
+msgid "Show notification when remaining (seconds)"
+msgstr ""
+
+msgctxt "#32103"
+msgid "Countdown timer duration (seconds)"
+msgstr ""
+
+msgctxt "#32107"
+msgid "Next Episode"
+msgstr ""
+
+msgctxt "#32108"
+msgid "Play ({0}s)"
+msgstr ""
+
+msgctxt "#32109"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "#32110"
+msgid "Ep {0:02d}"
+msgstr ""
+
+msgctxt "#32200"
+msgid "Skip Intro"
+msgstr ""
+
+msgctxt "#32201"
+msgid "Enable Skip Intro"
+msgstr ""
+
+msgctxt "#32202"
+msgid "Skip ({0}s)"
+msgstr ""
+
+msgctxt "#32203"
+msgid "Auto Skip (no prompt)"
+msgstr ""
+
+msgctxt "#32204"
+msgid "Countdown (seconds)"
+msgstr ""
