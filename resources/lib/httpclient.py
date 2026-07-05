@@ -157,7 +157,7 @@ def save_tvshow_season_episodes(tmdb_id, season, serie_name, original_name,
         imdb_id=imdb_id, last_episode_num=last_episode_num,
     )
 
-def process_and_save_tvshow_season(tmdb_id, season_data, imdb_id=None):
+def process_and_save_tvshow_season(tmdb_id, season_data, imdb_id=None, series_fanart=None):
     if not season_data or 'episodes' not in season_data:
         return False
     try:
@@ -166,6 +166,16 @@ def process_and_save_tvshow_season(tmdb_id, season_data, imdb_id=None):
         episodes_list = season_data.get('episodes', [])
         if not episodes_list:
             return False
+
+        if series_fanart is None:
+            try:
+                show_src = open_season_api(tmdb_id)
+                series_fanart = (
+                    f"https://image.tmdb.org/t/p/original{show_src.get('backdrop_path')}"
+                    if show_src.get('backdrop_path') else ''
+                )
+            except Exception:
+                series_fanart = ''
 
         episodes_data = []
         for ep in episodes_list:
@@ -177,7 +187,7 @@ def process_and_save_tvshow_season(tmdb_id, season_data, imdb_id=None):
                 ep.get('name', ''),
                 ep.get('overview', ''),
                 thumbnail,
-                ''
+                series_fanart or thumbnail
             ))
 
         save_tvshow_season_episodes(

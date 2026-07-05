@@ -34,9 +34,6 @@ try:
 except:
     pass
 
-KODI_VERSION = xbmc.getInfoLabel("System.BuildVersion")
-KODI_MAJOR = int(KODI_VERSION.split('.')[0])
-
 class Donate(xbmcgui.WindowDialog):
     def __init__(self):
         super().__init__()
@@ -135,26 +132,15 @@ def build_tvshow_playlist(tmdb_id, season_num, current_episode_num, serie_name, 
             list_item = xbmcgui.ListItem(title)
             list_item.setArt({'thumb': img, 'icon': img, 'fanart': fanart or img})
 
-            if KODI_MAJOR >= 20:
-                info_tag = list_item.getVideoInfoTag()
-                info_tag.setTitle(name if name else title)
-                info_tag.setTvShowTitle(serie_name)
-                info_tag.setPlot(description)
-                info_tag.setMediaType('episode')
-                info_tag.setSeason(season_num)
-                info_tag.setEpisode(ep_num)
-                if original_name:
-                    info_tag.setOriginalTitle(original_name)
-            else:
-                list_item.setInfo('video', {
-                    'title': name if name else title,
-                    'tvshowtitle': serie_name,
-                    'plot': description,
-                    'mediatype': 'episode',
-                    'season': season_num,
-                    'episode': ep_num,
-                    'originaltitle': original_name,
-                })
+            info_tag = list_item.getVideoInfoTag()
+            info_tag.setTitle(name if name else title)
+            info_tag.setTvShowTitle(serie_name)
+            info_tag.setPlot(description)
+            info_tag.setMediaType('episode')
+            info_tag.setSeason(season_num)
+            info_tag.setEpisode(ep_num)
+            if original_name:
+                info_tag.setOriginalTitle(original_name)
 
             playlist.add(url=plugin_url, listitem=list_item)
 
@@ -200,26 +186,15 @@ def build_anime_playlist(mal_id, current_episode_num, anime_name, original_name,
             list_item = xbmcgui.ListItem(title)
             list_item.setArt({'thumb': img, 'icon': img, 'fanart': fanart or img})
 
-            if KODI_MAJOR >= 20:
-                info_tag = list_item.getVideoInfoTag()
-                info_tag.setTitle(name if name else f'Ep {ep_num}')
-                info_tag.setTvShowTitle(anime_name)
-                info_tag.setPlot(description)
-                info_tag.setMediaType('episode')
-                info_tag.setSeason(1)
-                info_tag.setEpisode(ep_num)
-                if original_name:
-                    info_tag.setOriginalTitle(original_name)
-            else:
-                list_item.setInfo('video', {
-                    'title': name if name else f'Ep {ep_num}',
-                    'tvshowtitle': anime_name,
-                    'plot': description,
-                    'mediatype': 'episode',
-                    'season': 1,
-                    'episode': ep_num,
-                    'originaltitle': original_name
-                })
+            info_tag = list_item.getVideoInfoTag()
+            info_tag.setTitle(name if name else f'Ep {ep_num}')
+            info_tag.setTvShowTitle(anime_name)
+            info_tag.setPlot(description)
+            info_tag.setMediaType('episode')
+            info_tag.setSeason(1)
+            info_tag.setEpisode(ep_num)
+            if original_name:
+                info_tag.setOriginalTitle(original_name)
 
             playlist.add(url=plugin_url, listitem=list_item)
 
@@ -299,41 +274,20 @@ def auto_play_preferred_language(mal_id, tmdb_id, imdb, year, season, episode, v
             showtitle = serie_name
             episode_title = video_title or f"{getString(30602)} {episode}"
 
-            if KODI_MAJOR >= 20:
-                info_tag = play_item.getVideoInfoTag()
-                info_tag.setTitle(episode_title)
-                info_tag.setTvShowTitle(showtitle)
-                info_tag.setPlot(description)
-                info_tag.setMediaType('episode')
-                if tmdb_id:
-                    info_tag.setUniqueIDs({'tmdb': tmdb_id}, 'tmdb')
-            else:
-                info_dict = {
-                    'title': episode_title,
-                    'tvshowtitle': showtitle,
-                    'plot': description,
-                    'mediatype': 'episode'
-                }
-                if tmdb_id:
-                    info_dict['uniqueid'] = {'tmdb': tmdb_id}
-                play_item.setInfo('video', info_dict)
+            info_tag = play_item.getVideoInfoTag()
+            info_tag.setTitle(episode_title)
+            info_tag.setTvShowTitle(showtitle)
+            info_tag.setPlot(description)
+            info_tag.setMediaType('episode')
+            if tmdb_id:
+                info_tag.setUniqueIDs({'tmdb': tmdb_id}, 'tmdb')
         else:
-            if KODI_MAJOR >= 20:
-                info_tag = play_item.getVideoInfoTag()
-                info_tag.setTitle(video_title)
-                info_tag.setPlot(description)
-                info_tag.setMediaType('movie')
-                if year:
-                    info_tag.setYear(int(year))
-            else:
-                info_dict = {
-                    'title': video_title,
-                    'plot': description,
-                    'mediatype': 'movie'
-                }
-                if year:
-                    info_dict['year'] = int(year)
-                play_item.setInfo('video', info_dict)
+            info_tag = play_item.getVideoInfoTag()
+            info_tag.setTitle(video_title)
+            info_tag.setPlot(description)
+            info_tag.setMediaType('movie')
+            if year:
+                info_tag.setYear(int(year))
 
         if sub:
             play_item.setSubtitles([sub])
@@ -944,30 +898,16 @@ def play_resolve_movies(param):
         elif stream_lower.endswith(('.mp4', '.mkv', '.avi', '.mov', '.webm', '.ts')):
             play_item.setMimeType('video/mp4')
 
-        if KODI_MAJOR >= 20:
-            info_tag = play_item.getVideoInfoTag()
-            info_tag.setTitle(movie_name)
-            info_tag.setPlot(description)
-            info_tag.setMediaType('movie')
-            if year:
-                info_tag.setYear(int(year))
-            if original_name:
-                info_tag.setOriginalTitle(original_name)
-            if imdb:
-                info_tag.setUniqueIDs({'imdb': imdb}, 'imdb')
-        else:
-            info_dict = {
-                'title': movie_name,
-                'plot': description,
-                'mediatype': 'movie'
-            }
-            if imdb:
-                info_dict['imdbnumber'] = imdb
-            if year:
-                info_dict['year'] = int(year)
-            if original_name:
-                info_dict['originaltitle'] = original_name
-            play_item.setInfo('video', info_dict)
+        info_tag = play_item.getVideoInfoTag()
+        info_tag.setTitle(movie_name)
+        info_tag.setPlot(description)
+        info_tag.setMediaType('movie')
+        if year:
+            info_tag.setYear(int(year))
+        if original_name:
+            info_tag.setOriginalTitle(original_name)
+        if imdb:
+            info_tag.setUniqueIDs({'imdb': imdb}, 'imdb')
 
         if sub:
             play_item.setSubtitles([sub])
@@ -1089,6 +1029,7 @@ def anime_episodes(param):
                 'playcount': 1 if int(epnum) in watched_set else 0,
                 'resume_time': resume_map.get(int(epnum))
             }, destiny='/play_resolve_animes', folder=False)
+        setview('InfoWall')
         end()
     except:
         notify(getString(30406))
@@ -1155,6 +1096,7 @@ def open_episodes(param):
                 'playcount': 1 if int(episode_num) in watched_set else 0,
                 'resume_time': resume_map.get(int(episode_num))
             }, destiny='/play_resolve_tvshows', folder=False)
+        setview('InfoWall')
         end()
     except:
         pass
@@ -1170,7 +1112,7 @@ def play_resolve_tvshows(param):
     episode_num = param.get('episode_num', '')
     episode_title = param.get('episode_title', '')
     iconimage = param.get('iconimage', '')
-    fanart = param.get('fanart', iconimage)
+    fanart = param.get('fanart', '') or iconimage
     description = param.get('description', '')
     from_upnext = param.get('from_upnext', 'false')
 
@@ -1261,34 +1203,17 @@ def play_resolve_tvshows(param):
 
         showtitle = serie_name
 
-        if KODI_MAJOR >= 20:
-            info_tag = play_item.getVideoInfoTag()
-            info_tag.setTitle(episode_title)
-            info_tag.setTvShowTitle(showtitle)
-            info_tag.setPlot(description)
-            info_tag.setMediaType('episode')
-            info_tag.setSeason(season_num)
-            info_tag.setEpisode(episode_num)
-            if original_name:
-                info_tag.setOriginalTitle(original_name)
-            if tmdb_id:
-                info_tag.setUniqueIDs({'tmdb': tmdb_id}, 'tmdb')
-        else:
-            info_dict = {
-                'title': episode_title,
-                'tvshowtitle': showtitle,
-                'plot': description,
-                'mediatype': 'episode',
-                'season': season_num,
-                'episode': episode_num,
-            }
-            if imdb:
-                info_dict['imdbnumber'] = imdb
-            if original_name:
-                info_dict['originaltitle'] = original_name
-            if tmdb_id:
-                info_dict['uniqueid'] = {'tmdb': tmdb_id}
-            play_item.setInfo('video', info_dict)
+        info_tag = play_item.getVideoInfoTag()
+        info_tag.setTitle(episode_title)
+        info_tag.setTvShowTitle(showtitle)
+        info_tag.setPlot(description)
+        info_tag.setMediaType('episode')
+        info_tag.setSeason(season_num)
+        info_tag.setEpisode(episode_num)
+        if original_name:
+            info_tag.setOriginalTitle(original_name)
+        if tmdb_id:
+            info_tag.setUniqueIDs({'tmdb': tmdb_id}, 'tmdb')
 
         if sub:
             play_item.setSubtitles([sub])
@@ -1428,28 +1353,15 @@ def play_resolve_animes(param):
         elif stream_lower.endswith(('.mp4', '.mkv', '.avi', '.mov', '.webm', '.ts')):
             play_item.setMimeType('video/mp4')
 
-        if KODI_MAJOR >= 20:
-            info_tag = play_item.getVideoInfoTag()
-            info_tag.setTitle(episode_title)
-            info_tag.setTvShowTitle(anime_name)
-            info_tag.setPlot(description)
-            info_tag.setMediaType('episode')
-            info_tag.setSeason(1)
-            info_tag.setEpisode(episode_num)
-            if original_name:
-                info_tag.setOriginalTitle(original_name)
-        else:
-            info_dict = {
-                'title': episode_title,
-                'tvshowtitle': anime_name,
-                'plot': description,
-                'mediatype': 'episode',
-                'season': 1,
-                'episode': episode_num,
-            }
-            if original_name:
-                info_dict['originaltitle'] = original_name
-            play_item.setInfo('video', info_dict)
+        info_tag = play_item.getVideoInfoTag()
+        info_tag.setTitle(episode_title)
+        info_tag.setTvShowTitle(anime_name)
+        info_tag.setPlot(description)
+        info_tag.setMediaType('episode')
+        info_tag.setSeason(1)
+        info_tag.setEpisode(episode_num)
+        if original_name:
+            info_tag.setOriginalTitle(original_name)
 
         if sub:
             play_item.setSubtitles([sub])
@@ -1553,23 +1465,14 @@ def play_resolve_anime_movies(param):
         elif stream_lower.endswith(('.mp4', '.mkv', '.avi', '.mov', '.webm', '.ts')):
             play_item.setMimeType('video/mp4')
 
-        if KODI_MAJOR >= 20:
-            tag = play_item.getVideoInfoTag()
-            tag.setTitle(anime_name)
-            tag.setPlot(description)
-            tag.setMediaType('movie')
-            if year:
-                tag.setYear(int(year))
-            if original_name:
-                tag.setOriginalTitle(original_name)
-        else:
-            play_item.setInfo('video', {
-                'title': anime_name,
-                'originaltitle': original_name,
-                'plot': description,
-                'mediatype': 'movie',
-                'year': int(year) if year else None
-            })
+        tag = play_item.getVideoInfoTag()
+        tag.setTitle(anime_name)
+        tag.setPlot(description)
+        tag.setMediaType('movie')
+        if year:
+            tag.setYear(int(year))
+        if original_name:
+            tag.setOriginalTitle(original_name)
 
         if sub:
             play_item.setSubtitles([sub])
