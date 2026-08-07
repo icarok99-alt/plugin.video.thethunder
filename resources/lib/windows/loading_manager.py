@@ -10,6 +10,7 @@ import xbmcgui
 
 from resources.lib.windows.loading_window import LoadingWindow
 from resources.lib.windows.source_select import SourceSelect
+from resources.lib.kodi_service import get_thumb_path
 
 
 class _PlaybackMonitor(xbmc.Player):
@@ -115,11 +116,21 @@ class LoadingManager:
             self._busy_suppress_thread.daemon = True
             self._busy_suppress_thread.start()
 
+    def _resolve_fanart(self, fanart_path):
+        if not fanart_path:
+            return self._default_fanart
+        try:
+            cached = get_thumb_path(fanart_path)
+            if cached:
+                return cached
+        except Exception:
+            pass
+        return fanart_path
+
     def show(self, fanart_path=None):
         with self._lock:
             try:
-                if not fanart_path:
-                    fanart_path = self._default_fanart
+                fanart_path = self._resolve_fanart(fanart_path)
 
                 xbmcgui.Window(10000).setProperty('loading.fanart', fanart_path)
 
